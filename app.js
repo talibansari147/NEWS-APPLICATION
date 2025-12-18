@@ -4,7 +4,6 @@ function getNews() {
 
  
         let search = document.getElementById("searchInput").value;
-        let loader = document.getElementById("loader");
         let container = document.getElementById("newsContainer");
           if (search === "") {
     alert("Please enter something to search");
