@@ -9,40 +9,38 @@ function getNews() {
     alert("Please enter something to search");
     return;
   }
- 
-  fetch(`https://newsapi.org/v2/everything?q=${search}&sortBy=publishedAt&apiKey=${API_KEY}`)
+
+    
+    fetch(`https://newsapi.org/v2/everything?q=${search}&sortBy=publishedAt&apiKey=${API_KEY}`)
     .then(response => response.json())
     .then(data => {
             if(data.totalResults === 0){
-             alert("No News Found!....")
+              alert("No News Found!....")
             }
-            else{
-
-                
-                container.innerHTML = "";
-                
+               container.innerHTML = "";
                 data.articles.map(article => {
                     container.innerHTML += `
                     
                       <div class="news-card">
-                       <img src="${article.urlToImage}" alt="Image not available">
-                       <h3>${article.title || 'Title not available'}</h3>
-                       <p>${article.description || 'Description not available'}</p>
+                      <img src="${article.urlToImage}" alt="Image not available">
+                      <h3>${article.title || 'Title not available'}</h3>
+                      <p>${article.description || 'Description not available'}</p>
                        <p><strong>Author:</strong> ${article.author || 'Unknown'}</p>
                        <p><strong>Source:</strong> ${article.source.name || 'Unknown Source'}</p>
                        <p><strong>Date:</strong> ${article.publishedAt ? new Date(article.publishedAt).toDateString() : 'Date not available'}</p>
                        <p>${article.content || 'Content not available'}</p>
                        <a href="${article.url || '#'}">Read Full Article</a>
-                    </div>
+                       </div>
+                       
+                       `;
+                      });
+                      
                     
-                    `;
-                });
-                
-            }
-            })
-            .catch(error =>{ 
-            console.log(error)
-            });
-        }
+                  })
+                  .catch(error =>{ 
+                    console.log(error)
+                  });
+                }
+              
 
 
