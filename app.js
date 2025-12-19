@@ -17,22 +17,21 @@ function getNews() {
             if(data.totalResults === 0){
               alert("No News Found!....")
             }
+            
                container.innerHTML = "";
-                data.articles.forEach(article => {
+                data.articles.map(articles => {
                    container.innerHTML += `
                    
                    <div class="news-card">
-                      <img src="${article.urlToImage}" alt="Image not available">
-                      <h3>${article.title || 'Title not available'}</h3>
-                      <p>${article.description || 'Description not available'}</p>
-                      <p><strong>Author:</strong> ${article.author || 'Unknown'}</p>
-                      <p><strong>Source:</strong> ${article.source.name || 'Unknown Source'}</p>
-                       <p><strong>Date:</strong> ${article.publishedAt ? new Date(article.publishedAt).toDateString() : 'Date not available'}</p>
-                       <p>${article.content || 'Content not available'}</p>
-                       <a href="${article.url || '#'}">Read Full Article</a>
-                       </div>
-                       
-                       `;
+                      <img src="${articles.urlToImage}" alt="Image not available">
+                      <h3>${articles.title || 'Title not available'}</h3>
+                      <p>${articles.description || 'Description not available'}</p>
+                      <p><strong>Author:</strong> ${articles.author || 'Unknown'}</p>
+                      <p><strong>Source:</strong> ${articles.source.name || 'Unknown Source'}</p>
+                       <p><strong>Date:</strong> ${articles.publishedAt ? new Date(articles.publishedAt).toDateString() : 'Date not available'}</p>
+                       <p>${articles.content || 'Content not available'}</p>
+                       <a href="${articles.url || '#'}">Read Full Article</a>
+                       </div>`;
                       });
                     
                   })
