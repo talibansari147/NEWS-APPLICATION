@@ -18,15 +18,17 @@ function getNews() {
               alert("No News Found!....")
             }
                container.innerHTML = "";
-                data.articles.map(article => {
-                    container.innerHTML += `
-                    
-                      <div class="news-card">
+               if(data.articles && data.articles.length > 0){
+
+                 data.articles.map(article => {
+                   container.innerHTML += `
+                   
+                   <div class="news-card">
                       <img src="${article.urlToImage}" alt="Image not available">
                       <h3>${article.title || 'Title not available'}</h3>
                       <p>${article.description || 'Description not available'}</p>
-                       <p><strong>Author:</strong> ${article.author || 'Unknown'}</p>
-                       <p><strong>Source:</strong> ${article.source.name || 'Unknown Source'}</p>
+                      <p><strong>Author:</strong> ${article.author || 'Unknown'}</p>
+                      <p><strong>Source:</strong> ${article.source.name || 'Unknown Source'}</p>
                        <p><strong>Date:</strong> ${article.publishedAt ? new Date(article.publishedAt).toDateString() : 'Date not available'}</p>
                        <p>${article.content || 'Content not available'}</p>
                        <a href="${article.url || '#'}">Read Full Article</a>
@@ -35,6 +37,7 @@ function getNews() {
                        `;
                       });
                       
+                    }
                     
                   })
                   .catch(error =>{ 
