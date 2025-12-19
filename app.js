@@ -1,6 +1,6 @@
 let API_KEY = "8c603dff505342049733bb4ec3468fb7";
 
-function getNews() {
+async function getNews() {
 
  
         let search = document.getElementById("searchInput").value;
@@ -11,16 +11,17 @@ function getNews() {
   }
 
     
-    fetch(`https://newsapi.org/v2/everything?q=${search}&sortBy=publishedAt&apiKey=${API_KEY}`)
-    .then(response => response.json())
-    .then(data => {
+    let response = await fetch(`https://newsapi.org/v2/everything?q=${search}&sortBy=publishedAt&apiKey=${API_KEY}`)
+    let data = await response.json();
             if(data.totalResults === 0){
               alert("No News Found!....")
             }
             console.log(data);
             
                container.innerHTML = "";
-                data.articles.map(articles => {
+             data.articles.forEach(articles => {
+                  
+                  
                    container.innerHTML += `
                    
                    <div class="news-card">
@@ -35,11 +36,9 @@ function getNews() {
                        </div>`;
                       });
                     
-                  })
-                  .catch(error =>{ 
-                    console.log(error)
-                  });
-                }
+                  }
+                 
+                
               
 
 
