@@ -17,6 +17,7 @@ function getNews() {
             if(data.totalResults === 0){
               alert("No News Found!....")
             }
+            console.log(data);
             
                container.innerHTML = "";
                 data.articles.map(articles => {
