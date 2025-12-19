@@ -18,9 +18,7 @@ function getNews() {
               alert("No News Found!....")
             }
                container.innerHTML = "";
-               if(data.articles && data.articles.length > 0){
-
-                 data.articles.map(article => {
+                data.articles.forEach(article => {
                    container.innerHTML += `
                    
                    <div class="news-card">
@@ -36,8 +34,6 @@ function getNews() {
                        
                        `;
                       });
-                      
-                    }
                     
                   })
                   .catch(error =>{ 
