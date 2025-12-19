@@ -11,7 +11,8 @@ async function getNews() {
   }
 
     
-    let response = await fetch(`https://newsapi.org/v2/everything?q=${search}&sortBy=publishedAt&apiKey=${API_KEY}`)
+try {
+  let response = await fetch(`https://newsapi.org/v2/everything?q=${search}&sortBy=publishedAt&apiKey=${API_KEY}`)
     let data = await response.json();
             if(data.totalResults === 0){
               alert("No News Found!....")
@@ -38,6 +39,11 @@ async function getNews() {
                     
                   }
                  
+                  catch (error) {
+                    console.log(error);
+                    
+                  } 
+}
                 
               
 
